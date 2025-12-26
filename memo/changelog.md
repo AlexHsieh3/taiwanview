@@ -81,6 +81,8 @@ export default defineConfig({
 | `7ea2e9b` | feat: 將 Stitch AI 設計轉換為 Vue 組件 |
 | `1fbe994` | feat: 修復 Tailwind CSS 配置並新增開發進度記錄 |
 | `feb8037` | feat: 新增巴士圖標 favicon |
+| `d7f08dc` | docs: 新增開發日誌 changelog.md |
+| `abef63b` | fix: 移除舊的 favicon.ico，只保留 SVG 格式 |
 
 ---
 
@@ -114,7 +116,21 @@ plugins: [..., tailwindcss()]
 
 ---
 
-#### 問題 3: Chrome DevTools MCP 連接失敗
+#### 問題 3: Favicon 無法更新
+**症狀**: 新增 favicon.svg 後，瀏覽器 tab 上的圖標沒有變化
+
+**原因**:
+1. 舊的 `favicon.ico` 仍然存在，瀏覽器優先使用 .ico
+2. 瀏覽器快取問題
+
+**解決**:
+1. 刪除舊的 `favicon.ico`
+2. 移除 HTML 中對 `.ico` 的引用
+3. 強制刷新瀏覽器 (`Cmd + Shift + R`) 或清除快取
+
+---
+
+#### 問題 4: Chrome DevTools MCP 連接失敗
 ```
 Error: The browser is already running for chrome-devtools-mcp/chrome-profile
 ```
